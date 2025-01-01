@@ -1,0 +1,190 @@
+/* General chatbox container styles */
+.chatbox {
+  width: 95%; /* Full width of the website */
+  margin: 0 auto; /* Remove horizontal margins */
+  padding: 20px;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 500px; /* Fixed height for consistent layout */
+  position: relative;
+  box-sizing: border-box; /* Include padding and border in width */
+}
+
+/* Center the conversation messages */
+.chatbox-conversation {
+  position: relative;
+  flex-grow: 1;
+  overflow-y: auto;
+  margin-bottom: 15px;
+  padding: 10px;
+  padding-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  width: 100%; /* Full width */
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+/* User's message style */
+.user-message {
+  align-self: flex-end; /* Align user's message to the right */
+  background-color: #075e54; /* WhatsApp sender green */
+  color: #ffffff; /* White text */
+  padding: 10px 15px;
+  border-radius: 15px;
+  border-top-right-radius: 0; /* Rounded edges */
+  margin: 10px;
+  max-width: 40%; /* Limit the width of user messages */
+  word-wrap: break-word;
+  white-space: pre-wrap; /* Preserve newlines in user messages */
+  position: relative; /* For positioning the triangle */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15); /* Subtle shadow for depth */
+}
+
+/* Triangle pointing to top-right for user's message */
+.user-message::after {
+  content: '';
+  position: absolute;
+  top: -1.19px; /* Adjusted to align with the message */
+  right: -12.3px; /* Position triangle outside the message */
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent; /* Transparent left edge */
+  border-right: 10px solid transparent; /* Transparent right edge */
+  border-bottom: 10px solid #075e54; /* Green color matching the message */
+  transform: rotate(-45deg); /* Rotate the triangle by 45 degrees */
+}
+
+/* Bot's message style */
+.bot-message {
+  align-self: flex-start; /* Align bot's message to the left */
+  background-color: #40444b; /* Dark gray for bot message */
+  color: #ffffff; /* White text */
+  padding: 10px 15px;
+  border-radius: 15px;
+  border-top-left-radius: 0; /* Rounded edges */
+  margin: 10px;
+  max-width: 60%; /* Limit the width of bot messages */
+  word-wrap: break-word;
+  white-space: pre-wrap; /* Preserve newlines in bot messages */
+  position: relative; /* For positioning the triangle */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15); /* Subtle shadow for depth */
+}
+
+/* Triangle pointing to top-left for bot's message */
+.bot-message::after {
+  content: '';
+  position: absolute;
+  top: -1.325px;
+  left: -12.3px; /* Position triangle outside the message */
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent; /* Transparent left edge */
+  border-right: 10px solid transparent; /* Transparent right edge */
+  border-bottom: 10px solid #40444b; /* Gray color matching the message */
+  transform: rotate(45deg); /* Rotate the triangle by 45 degrees */
+}
+
+/* Timestamp for messages */
+.user-message .timestamp {
+  font-size: 0.75em; /* Small font size */
+  color: gray; /* Subtle color */
+  margin-top: 5px; /* Space between message and timestamp */
+  text-align: right; /* Align timestamp to the left */
+  display: block;
+  margin-left: 5px /* Place on a new line */
+}
+
+.bot-message .timestamp {
+  font-size: 0.75em; /* Small font size */
+  color: gray; /* Subtle color */
+  margin-top: 5px; /* Space between message and timestamp */
+  text-align: right; /* Align timestamp to the right */
+  display: inline-block;
+  margin-right: 5px /* Place on a new line */
+}
+
+/* Input field and button styles */
+.chatbox-input {
+  display: flex;
+  justify-content: space-between; /* Spread input and buttons */
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  position: relative;
+}
+
+.chatbox-input input {
+  flex-grow: 1;
+  padding: 12px;
+  border-radius: 20px;
+  background-color: #333;
+  color: white;
+  border: none;
+  max-width: 100%;
+  outline: none;
+  font-size: 14px;
+  padding-right: 40px; /* Add space for send icon*/
+}
+
+/* Container for buttons */
+.chatbox-buttons {
+  display: flex;
+  gap: 5px; /* Space between buttons */
+}
+
+.chatbox-input button {
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.chatbox-input button img {
+  height: 30px;
+  width: 30px;
+  object-fit: contain;
+}
+
+.enter-button {
+  padding: 10px 12px;
+  background-color: #075e54;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.enter-button:hover {
+  background-color: #056044;
+}
+
+/* Blinking cursor effect */
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* Circular cursor style */
+.circular-cursor {
+  display: inline-block;
+  width: 15px; /* Diameter of the circle */
+  height: 15px;
+  background-color: #ffffff; /* Match the bot's message color or use a contrasting color */
+  border-radius: 100%; /* Make it circular */
+  margin-left: 5px; /* Add spacing after the typed text */
+  animation: blink 0.7s infinite; /* Blinking effect */
+}
